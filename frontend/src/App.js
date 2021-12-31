@@ -5,6 +5,7 @@ import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 
 function App() {
   const [isRecording, setRecording] = useState(false);
+  const [transcription, setTranscription] = useState('');
   const ws = useRef(null);
   const recorder = useRef(null);
   const stream = useRef(null);
@@ -16,6 +17,7 @@ function App() {
     };
     ws.current.onmessage = e => {
       const message = JSON.parse(e.data);
+      setTranscription(message.value);
       console.log(message.value);
     };
     ws.current.onclose = () => console.log('ws closed');
@@ -46,6 +48,7 @@ function App() {
       if (!isRecording && ws.current.readyState === 1) {
         recorder.current.stopRecording();
         recorder.current.reset();
+        setTranscription('');
         console.log('stopping recording')
         return
 
@@ -62,10 +65,11 @@ function App() {
   return (
     <div className='container'>
       <div className='box'>
-        <h2>Max</h2>
+        <h2>Input</h2>
         <button onClick={() => setRecording(!isRecording)}>
                 {isRecording ? "Stop" : "Start"}
         </button>
+        <p>{transcription}</p>
       </div>
       <div className='box'>
         <h2>Output</h2>

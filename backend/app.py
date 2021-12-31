@@ -29,7 +29,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
             # transcribe text
             text = wav2vec2.buffer_to_text(audio).lower()
-            
+
             # Send message to the client
             resp = {'value': text}
             await websocket.send_json(resp)
