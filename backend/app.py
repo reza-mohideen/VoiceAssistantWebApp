@@ -1,10 +1,6 @@
 from fastapi import FastAPI, WebSocket
-import random
-import json
-from scipy.io.wavfile import write
 import numpy as np
 from VoiceRecognition.Wav2vecLive.inference import Wave2Vec2Inference
-
 
 app = FastAPI()
 
@@ -14,9 +10,9 @@ async def root():
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
-    print('Accepting client connection...')
     audio = np.array([], dtype=np.int16)
     wav2vec2 = Wave2Vec2Inference("OthmaneJ/distil-wav2vec2")
+    print('Accepting client connection...')
     await websocket.accept()
     while True:
         try:
