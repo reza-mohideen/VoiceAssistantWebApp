@@ -16,7 +16,7 @@ function App() {
     };
     ws.current.onmessage = e => {
       const message = JSON.parse(e.data);
-      console.log('e', message.value);
+      console.log(message.value);
     };
     ws.current.onclose = () => console.log('ws closed');
 
@@ -29,6 +29,7 @@ function App() {
         recorderType: StereoAudioRecorder,
         numberOfAudioChannels: 1,
         timeSlice: 500,
+        bufferSize: 16384,
         ondataavailable: function(blob) {
           console.log('voice data available')
           ws.current.send(blob);
