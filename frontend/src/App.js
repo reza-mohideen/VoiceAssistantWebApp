@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useState, useRef, useEffect} from 'react';
+import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 
 function App() {
   const [isRecording, setRecording] = useState(false);
   const ws = useRef(null);
-  const audioContext = useRef(new AudioContext());
-  const source = useRef(null);
-  let chunks = useRef([]);
+  const recorder = useRef(null);
+  const stream = useRef(null);
 
   useEffect(() => {
-    navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( stream => {
-      source.current = audioContext.current.createMediaStreamSource(stream)
-      console.log(source.current.context)
-    })
-    setInterval(hello => {
-      console.log(source.current)
-    }, 1000);
-    
     ws.current = new WebSocket('ws://localhost:8000/ws');
     ws.current.onopen = () => {
       console.log('ws opened')
@@ -28,19 +20,38 @@ function App() {
     };
     ws.current.onclose = () => console.log('ws closed');
 
+    stream.current =navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( stream => {
+      recorder.current = RecordRTC(stream, {
+        type: 'audio',
+        mimeType: 'audio/webm',
+        sampleRate: 44100,
+        desiredSampRate: 16000,
+        recorderType: StereoAudioRecorder,
+        numberOfAudioChannels: 1,
+        timeSlice: 500,
+        ondataavailable: function(blob) {
+          console.log('voice data available')
+          ws.current.send(blob);
+        }
+      });
+    })
+
     return () => {
         ws.current.close();
     };
   }, []);
 
   useEffect(() => {
-      if (!isRecording) {
+      if (!isRecording && ws.current.readyState === 1) {
+        recorder.current.stopRecording();
+        recorder.current.reset();
+        console.log('stopping recording')
         return
 
       };
       if (isRecording && ws.current.readyState === 1) {
-        source.current.resume();
         
+        recorder.current.startRecording();
         console.log('starting recording')
       };
 
