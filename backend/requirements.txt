@@ -1,9 +1,11 @@
 beautifulsoup4
 datasets
 https://github.com/kpu/kenlm/archive/master.zip
+ibm_watson
 numpy
 PyAudio
 pyctcdecode
+python-dotenv
 requests
 scipy
 soundfile
