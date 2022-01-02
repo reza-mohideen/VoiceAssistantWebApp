@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Siriwave from 'react-siriwave';
 import React, {useState, useRef, useEffect} from 'react';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 
 function App() {
   const [isRecording, setRecording] = useState(false);
   const [transcription, setTranscription] = useState('');
+  const [amp, setAmplitude] = useState(0);
   const ws = useRef(null);
   const recorder = useRef(null);
   const stream = useRef(null);
@@ -48,25 +50,32 @@ function App() {
       if (!isRecording && ws.current.readyState === 1) {
         recorder.current.stopRecording();
         recorder.current.reset();
-        setTranscription('');
+        ws.current.send('stop');
         console.log('stopping recording')
         return
 
       };
       if (isRecording && ws.current.readyState === 1) {
-        
         recorder.current.startRecording();
+        ws.current.send('start');
         console.log('starting recording')
       };
 
-
   }, [isRecording]);
+
+  function updateAmplitude() {
+    if (amp === 0) setAmplitude(2);
+    else setAmplitude(0);
+  };
 
   return (
     <div className='container'>
+      <div className='siriwave'>
+        <Siriwave style='ios9' amplitude={amp}/>
+      </div>
       <div className='box'>
         <h2>Input</h2>
-        <button onClick={() => setRecording(!isRecording)}>
+        <button onClick={() => {setRecording(!isRecording); updateAmplitude()}}>
                 {isRecording ? "Stop" : "Start"}
         </button>
         <p>{transcription}</p>
