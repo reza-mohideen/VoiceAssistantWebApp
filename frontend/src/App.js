@@ -25,13 +25,13 @@ function App() {
     stream.current =navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( stream => {
       recorder.current = RecordRTC(stream, {
         type: 'audio',
-        mimeType: 'audio/webm',
+        mimeType: 'audio/webm;codecs=pcm',
         sampleRate: 44100,
         desiredSampRate: 16000,
         recorderType: StereoAudioRecorder,
         numberOfAudioChannels: 1,
-        timeSlice: 500,
-        bufferSize: 16384,
+        timeSlice: 300,
+        bufferSize: 256,
         ondataavailable: function(blob) {
           console.log('voice data available')
           ws.current.send(blob);

@@ -9,7 +9,7 @@ from tqdm import tqdm
 from datasets import load_dataset, load_metric
 import re
 
-class Wave2Vec2Inference():
+class Wav2Vec2Inference():
     def __init__(self, model_name, lm_path=None):
         try:
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -51,7 +51,7 @@ class Wave2Vec2Inference():
         assert samplerate == 16000
         return self.buffer_to_text(audio_input)
 
-class TestWav2Vec2(Wave2Vec2Inference):
+class TestWav2Vec2(Wav2Vec2Inference):
     def __init__(self, model_name, lm_path=None):
         super().__init__(model_name, lm_path=lm_path) 
         self.TEST_SIZE = 100   
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     }
     LM = "VoiceRecognition/4gram_big.arpa"
     start = time.time()
-    asr = Wave2Vec2Inference(model_name=MODELS["distil"],lm_path=LM)
+    asr = Wav2Vec2Inference(model_name=MODELS["distil"],lm_path=LM)
     print(f"time to initialize obect was {time.time()-start}")
     text = asr.file_to_text("resources/augmented_audio_files/noisy_harvard.wav")
     print(text)
