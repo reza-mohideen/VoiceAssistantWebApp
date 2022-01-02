@@ -13,14 +13,14 @@ code {
 }
 
 .container {
-  margin: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin: auto;
+  width: 40%;
+  padding: 10px;
 }
 
 .box {
   box-shadow: -4px 10px 35px -1px rgba(0, 0, 0, 0.75);
-  min-height: 20rem;
+  min-height: 15rem;
   margin: 30px;
   padding: 20px;
   border-radius: 5px;
