@@ -48,14 +48,14 @@ function App() {
       if (!isRecording && ws.current.readyState === 1) {
         recorder.current.stopRecording();
         recorder.current.reset();
-        setTranscription('');
+        ws.current.send('stop');
         console.log('stopping recording')
         return
 
       };
       if (isRecording && ws.current.readyState === 1) {
-        
         recorder.current.startRecording();
+        ws.current.send('start');
         console.log('starting recording')
       };
 

@@ -14,14 +14,24 @@ async def root():
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     print('Accepting client connection...')
-    model.run()
     await websocket.accept()
     while True:
         try:
             # Wait for any message from the client
             data = await websocket.receive()
+
             # convert bytes to float
-            model.set_audio_chunk(data["bytes"])
+            if "text" in data.keys():
+                if data["text"] == "start":
+                    print("starting transcription")
+                    model.run()
+
+                elif data["text"] == "stop":
+                    print("stopping transcription")
+                    model.set_audio_chunk(data["bytes"])
+
+            if "bytes" in data.keys():
+                model.set_audio_chunk(data["bytes"])
 
             # transcribe text
             text,sample_length,inference_time = model.get_last_text()                        

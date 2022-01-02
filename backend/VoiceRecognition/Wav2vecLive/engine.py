@@ -19,6 +19,8 @@ class Engine:
         """stop the asr process"""
         Engine.exit_event.set()
         self.input_queue.put("close")
+        with self.audio_chunks.mutex:
+            self.audio_chunks.clear()
         print("asr stopped")
 
     def run(self):
@@ -39,11 +41,8 @@ class Engine:
 
     def vad_process(self, audio_chunks, asr_input_queue):
 
-        RATE=16000
-
         frames = b""
-        vad_tags = [] # holds boolean of whether speech was detected
-        end_frame = 0  
+        end_frame = 0
         exit_time = None
         while True:     
             print("frame length:", len(frames))
