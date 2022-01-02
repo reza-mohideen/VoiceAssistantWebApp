@@ -7012,6 +7012,13 @@ react-scripts@5.0.0:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-siriwave@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-siriwave/-/react-siriwave-2.1.0.tgz#6c0bf137420b0310e5546c97f1d29eece96686e1"
+  integrity sha512-TLbjzJ9Y9L5AulV3PMmKUw3VV9tuJ4pNWUtnGv382NyyLrIWTXDTLKEIL+H3HBtxZaiKWoHk4zKPTB8BbpdywQ==
+  dependencies:
+    siriwave "^2.2.0"
+
 react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
@@ -7466,6 +7473,11 @@ signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.6.tgz#24e630c4b0f03fea446a2bd299e62b4a6ca8d0af"
   integrity sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==
+
+siriwave@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/siriwave/-/siriwave-2.3.0.tgz#be76da79cd834da0135bee454e33d0b92aad46db"
+  integrity sha512-p/257wib0UPvbI8ZWkm5CrPNlQ9FhLoWLyA+HWLnBCYYRG9/p8UQ4J53o+oPqXaQMjII0svnno8wAgcmQYI+NA==
 
 sisteransi@^1.0.5:
   version "1.0.5"
