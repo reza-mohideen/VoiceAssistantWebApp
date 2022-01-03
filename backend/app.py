@@ -1,15 +1,35 @@
 import uvicorn
+from pydantic import BaseModel
 from fastapi import FastAPI, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
 from VoiceRecognition.Wav2vecLive.engine import Engine
 
 
 model = Engine("facebook/wav2vec2-base-960h")
+class Item(BaseModel):
+    text: str
+
 
 app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+origins = [
+    "http://localhost:3000",
+    "localhost:3000"
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+@app.post("/transcribe")
+async def transcribe(data: Item):
+    print(data)
+    return {"text": "Hello World"}
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -20,7 +40,7 @@ async def websocket_endpoint(websocket: WebSocket):
             # Wait for any message from the client
             data = await websocket.receive()
 
-            # convert bytes to float
+            # receiving data
             if "text" in data.keys():
                 if data["text"] == "start":
                     print("starting transcription")
@@ -33,12 +53,15 @@ async def websocket_endpoint(websocket: WebSocket):
             if "bytes" in data.keys():
                 model.set_audio_chunk(data["bytes"])
 
-            # transcribe text
+            # sending data
             text,sample_length,inference_time = model.get_last_text()                        
-            print(f"{sample_length:.3f}s\t{inference_time:.3f}s\t{text}")
-            # Send message to the client
-            resp = {'value': text}
+            resp = {'value': text, 'state': model.get_state()}
+            print(resp)
             await websocket.send_json(resp)
+
+            if model.get_state() == 3:
+                break
+
         except Exception as e:
             print('error:', e)
     

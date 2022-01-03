@@ -5,8 +5,10 @@ import React, {useState, useRef, useEffect} from 'react';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 
 function App() {
+  const url = 'http://localhost:8000';
   const [isRecording, setRecording] = useState(false);
   const [transcription, setTranscription] = useState('');
+  const [output, setOutput] = useState('');
   const [amp, setAmplitude] = useState(0);
   const ws = useRef(null);
   const recorder = useRef(null);
@@ -19,8 +21,23 @@ function App() {
     };
     ws.current.onmessage = e => {
       const message = JSON.parse(e.data);
-      setTranscription(message.value);
-      console.log(message.value);
+      if (message.state === 1 || message.state === 2) {
+        setTranscription(message.value);
+        console.log(message.value);
+      }
+      else if (message.state === 3) {
+        setTranscription(message.value);
+        stopRecording()
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: message.value })
+        };
+        fetch(url + '/transcribe', requestOptions)
+            .then(response => response.json())
+            .then(data => setOutput(data.text));
+      }
+      
     };
     ws.current.onclose = () => console.log('ws closed');
 
@@ -48,20 +65,28 @@ function App() {
 
   useEffect(() => {
       if (!isRecording && ws.current.readyState === 1) {
-        recorder.current.stopRecording();
-        recorder.current.reset();
-        ws.current.send('stop');
-        console.log('stopping recording')
+        stopRecording()
         return
 
       };
       if (isRecording && ws.current.readyState === 1) {
-        recorder.current.startRecording();
-        ws.current.send('start');
-        console.log('starting recording')
+        startRecording()
       };
 
   }, [isRecording]);
+
+  function startRecording() {
+    recorder.current.startRecording();
+      ws.current.send('start');
+      console.log('starting recording')
+  };
+
+  function stopRecording() {
+    recorder.current.stopRecording();
+      recorder.current.reset();
+      ws.current.send('stop');
+      console.log('stopping recording')
+  };
 
   function updateAmplitude() {
     if (amp === 0) setAmplitude(2);
@@ -82,6 +107,7 @@ function App() {
       </div>
       <div className='box'>
         <h2>Output</h2>
+        <p>{output}</p>
       </div>
     </div>
     )

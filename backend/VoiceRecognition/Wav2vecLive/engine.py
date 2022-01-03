@@ -14,13 +14,25 @@ class Engine:
         print('loading model')
         self.model = Wav2Vec2Inference(model_name, lm_path)
         self.vad = webrtcvad.Vad()
+        """
+        states -
+        0: both threads stopped
+        1: detect_silence && transcribe_audio threads running
+        2: detect_silence thread stopped but transcribe_audio thread running
+        3: final transcription ready
+        """
+        self.state = 0 
 
     def stop(self):
         """stop the asr process"""
         Engine.exit_event.set()
         self.input_queue.put("close")
-        with self.audio_chunks.mutex:
-            self.audio_chunks.clear()
+        while not self.audio_chunks.empty():
+            try:
+                self.audio_chunks.get(False)
+            except Empty:
+                continue
+        self.state = 2
         print("asr stopped")
 
     def run(self):
@@ -28,55 +40,66 @@ class Engine:
         self.output_queue = Queue()
         self.input_queue = Queue()
         self.audio_chunks = Queue()
-        self.asr_process = threading.Thread(target=Engine.asr_process, args=(
+        self.transcribe_audio = threading.Thread(target=Engine.transcribe_audio, args=(
             self, self.input_queue, self.output_queue,))
-        self.asr_process.start()
-        # time.sleep(5)  # start vad after asr model is loaded
+        self.transcribe_audio.start()
         
         print("starting VAD")
         self.start_time = time.time()
-        self.vad_process = threading.Thread(target=Engine.vad_process, args=(
+        self.detect_silence = threading.Thread(target=Engine.detect_silence, args=(
             self, self.audio_chunks, self.input_queue,))
-        self.vad_process.start()
+        self.detect_silence.start()
 
-    def vad_process(self, audio_chunks, asr_input_queue):
+        self.state = 1
+
+    def detect_silence(self, audio_chunks, asr_input_queue):
+        self.vad.set_mode(1)
+        
+        NUM_FRAMES = 5
+        RATE=16000
+        CHUNK=960 #30ms
+        FRAMES=20000
 
         frames = b""
-        end_frame = 0
         exit_time = None
+        prev_frame = 0
+        silence_tags = []
         while True:     
-            print("frame length:", len(frames))
             if Engine.exit_event.is_set():
                 break
 
             try:
+                print('detecting silence')
                 frame = audio_chunks.get()
-            
-                # add frames only if voice is detected
-                if True:
-                    frames += frame
+                    
+                # detect silince
+                silence_tags.append(self.vad.is_speech(frame[:CHUNK], RATE))
 
-                # add every 0.5 seconds of frames to queue
-                frame_diff = len(frames) - end_frame
-                if True:
+                # if time > 2 seconds and 80% of last 3 second of frames has no voice detected then listen for 2 more seconds then exit
+                percent_silence = len([ele for ele in silence_tags[-NUM_FRAMES:] if ele == False]) / NUM_FRAMES
+                elapsed_time = time.time() - self.start_time
+                print(f"percent silence is {percent_silence} and elapsed time is {elapsed_time}")
+                if percent_silence > 0.5:
+                    if exit_time is None:
+                        exit_time = time.time()
+                    elif time.time() - exit_time > 2:
+                        break
+
+                if silence_tags[-1]:
+                    # add frames to queue
+                    frames += frame
+                
+                frame_diff = len(frames) - prev_frame
+                if frame_diff > FRAMES:
                     asr_input_queue.put(frames)
-                    end_frame = len(frames)
+                    prev_frame = len(frames)
+
             except Empty:
                 continue
 
-                # if time > 2 seconds and 90% of last 1 second of frames has no voice detected then listen for 2 more seconds then exit
-                # NUM_FRAMES = 100
-                # percent_silence = len([ele for ele in vad_tags[-NUM_FRAMES:] if ele == False]) / NUM_FRAMES
-                # elapsed_time = time.time() - self.start_time
-                # if elapsed_time > 2 and (percent_silence > 0.8 and len(vad_tags[-NUM_FRAMES:]) == NUM_FRAMES):
-                #     if exit_time is None:
-                #         exit_time = time.time()
-                #     elif time.time() - exit_time > 2:
-                #         break
-                #     else:
-                #         pass
+        self.stop()
 
-    def asr_process(self, in_queue, output_queue):
+    def transcribe_audio(self, in_queue, output_queue):
         
         while True:  
             try:
@@ -95,6 +118,8 @@ class Engine:
             except Empty:
                 continue
 
+        self.state = 3
+
     def set_audio_chunk(self, chunk):
         self.audio_chunks.put(chunk[44:])
 
@@ -104,6 +129,9 @@ class Engine:
             return self.output_queue.get(block=False)
         except Empty:
             pass
+
+    def get_state(self):
+        return self.state
 
 if __name__ == "__main__":
     print("Live ASR")
