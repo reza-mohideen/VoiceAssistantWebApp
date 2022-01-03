@@ -65,12 +65,27 @@ function App() {
   }, []);
 
   useEffect(() => {
-      if (!isRecording && ws.current.readyState === 1) {
-        stopRecording()
-        ws.current.send('stop');
+      if (!isRecording) {
+        try {
+          recorder.current.stopRecording();
+          recorder.current.reset();
+          ws.current.send('stop');
+          console.log('stopping recording')
+          return
+        } catch (error) {
+          console.log(error)
+        }
+
       };
-      if (isRecording && ws.current.readyState === 1) {
-        startRecording()
+      if (isRecording) {
+        try {
+          recorder.current.startRecording();
+          ws.current.send('start');
+          console.log('starting recording')
+        } catch (error) {
+          console.log(error)
+        }
+        
       };
 
   }, [isRecording]);
