@@ -1,8 +1,8 @@
-from watson import Watson
-from word2math import preprocessed, math
-from word2stocks import company_stock
-from word2weather import weather
-from word2wiki import wiki
+from .watson import Watson
+from .word2math import preprocessed, math
+from .word2stocks import company_stock
+from .word2weather import weather
+from .word2wiki import wiki
 
 
 class Action:
@@ -22,6 +22,7 @@ class Action:
             confidence = self.watson.get_intents(response)[0]['confidence']
         except IndexError:
             intent = 'default'
+            
         print("intent:", intent)
         print("confidence:", confidence)
         if confidence > 0.30:

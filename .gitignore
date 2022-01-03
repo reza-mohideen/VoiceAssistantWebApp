@@ -28,6 +28,7 @@ __pycache__/
 # misc
 .DS_Store
 .env
+.pyc
 
 npm-debug.log*
 yarn-debug.log*

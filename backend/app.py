@@ -3,9 +3,10 @@ from pydantic import BaseModel
 from fastapi import FastAPI, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 from VoiceRecognition.Wav2vecLive.engine import Engine
+from VoiceRecognition.nlu.actions import Action
 
-
-model = Engine("facebook/wav2vec2-base-960h")
+model = Engine("facebook/wav2vec2-base-960h", "backend/resources/4gram_big.arpa")
+nlu = Action()
 
 class Item(BaseModel):
     text: str
@@ -29,8 +30,8 @@ app.add_middleware(
 
 @app.post("/transcribe")
 async def transcribe(data: Item):
-    print(data)
-    return {"text": "Hello World"}
+    print(data.text)
+    return {"text": nlu.take_action(data.text)}
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
