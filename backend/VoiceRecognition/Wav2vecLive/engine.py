@@ -14,6 +14,9 @@ class Engine:
         print('loading model')
         self.model = Wav2Vec2Inference(model_name, lm_path)
         self.vad = webrtcvad.Vad()
+        self.input_queue = Queue()
+        self.audio_chunks = Queue()
+        self.transcription = ""
         """
         states -
         0: both threads stopped
@@ -23,9 +26,26 @@ class Engine:
         """
         self.state = 0 
 
+    def reset(self):
+        Engine.exit_event.clear()
+
+        # clear queues
+        while not self.audio_chunks.empty():
+            try:
+                self.audio_chunks.get(False)
+            except Empty:
+                continue
+        while not self.input_queue.empty():
+            try:
+                self.input_queue.get(False)
+            except Empty:
+                continue
+        
+        self.transcription = ""
+        self.state = 0
+            
     def stop_listening(self):
         """stop the asr process"""
-        Engine.exit_event.set()
         self.input_queue.put("close")
         while not self.audio_chunks.empty():
             try:
@@ -37,11 +57,8 @@ class Engine:
 
     def run(self):
         """start the asr process"""
-        self.output_queue = Queue()
-        self.input_queue = Queue()
-        self.audio_chunks = Queue()
         self.transcribe_audio = threading.Thread(target=Engine.transcribe_audio, args=(
-            self, self.input_queue, self.output_queue,))
+            self, self.input_queue,))
         self.transcribe_audio.start()
         
         print("starting VAD")
@@ -99,12 +116,12 @@ class Engine:
 
         self.stop_listening()
 
-    def transcribe_audio(self, in_queue, output_queue):
+    def transcribe_audio(self, in_queue):
         
         while True:  
             try:
                 audio_frames = in_queue.get(block=False)       
-                if audio_frames == "close":
+                if audio_frames == "close" or Engine.exit_event.is_set():
                     break
                 print("transcribing text")
                 float64_buffer = np.frombuffer(audio_frames, dtype=np.int16) / 32767
@@ -113,7 +130,8 @@ class Engine:
                 inference_time = time.perf_counter()-start
                 sample_length = len(float64_buffer) / 16000  # length in sec
                 if text != "":
-                    output_queue.put([text,sample_length,inference_time])  
+                    # output_queue.put([text,sample_length,inference_time]) 
+                    self.transcription = text 
 
             except Empty:
                 continue
@@ -123,12 +141,9 @@ class Engine:
     def set_audio_chunk(self, chunk):
         self.audio_chunks.put(chunk[44:])
 
-    def get_last_text(self):
+    def get_transcription(self):
         """returns the text, sample length and inference time in seconds."""
-        try:
-            return self.output_queue.get(block=False)
-        except Empty:
-            pass
+        return self.transcription
 
     def get_state(self):
         return self.state

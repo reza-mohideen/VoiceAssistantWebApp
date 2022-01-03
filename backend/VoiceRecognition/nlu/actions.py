@@ -13,16 +13,14 @@ class Action:
         result_str = ""
         intent = "default"
         confidence = 0
-        print("command before spellcheck:", command)
         response = self.watson.send_message(command)
-        print("command after spellcheck:", command)
-        # print("response", response)
+        print("response", response)
         try:
             intent = self.watson.get_intents(response)[0]["intent"]
             confidence = self.watson.get_intents(response)[0]['confidence']
         except IndexError:
             intent = 'default'
-            
+
         print("intent:", intent)
         print("confidence:", confidence)
         if confidence > 0.30:
@@ -39,6 +37,8 @@ class Action:
                 result_str = "I didn't understand. You can try rephrasing."
         else:
             result_str = "I didn't understand. You can try rephrasing."
+
+        print("answer:", result_str)
 
         return result_str
 

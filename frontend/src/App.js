@@ -28,7 +28,7 @@ function App() {
 
       else if (message.state === 3) {
         setTranscription(message.value);
-        stopRecording()
+        stopRecording();
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -93,12 +93,11 @@ function App() {
   function startRecording() {
     recorder.current.startRecording();
     setRecording(true);
-    ws.current.send('start');
     console.log('starting recording')
   };
 
   function stopRecording() {
-    recorder.current.pauseRecording();
+    recorder.current.stopRecording();
     setRecording(false);
     updateAmplitude();
     console.log('stopping recording')

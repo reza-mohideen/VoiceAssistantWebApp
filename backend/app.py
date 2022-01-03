@@ -36,48 +36,44 @@ async def transcribe(data: Item):
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     print('Accepting client connection...')
-    final_text = ""
     await websocket.accept()
     while True:
         try:
             # Wait for any message from the client
             data = await websocket.receive()
+            model_state = model.get_state()
+
 
             # receiving data
             if "text" in data.keys():
-                if data["text"] == "start":
+                if data["text"] == "start" and model_state == 0:
                     print("starting transcription")
                     model.run()
 
-                elif data["text"] == "stop":
+                elif data["text"] == "stop" and model_state !=0:
                     print("stopping transcription")
-                    resp = {'value': final_text, 'state': 3}
+                    resp = {'value': model.get_transcription(), 'state': 3}
                     print(resp)
                     await websocket.send_json(resp)
-                    final_text = ""
-                    model.stop_listening()
-                    model.set_state(0)
                     
-
             # actions while model is running
-            if model.get_state() == 1 or model.get_state() == 2:
+            if model_state == 1 or model_state == 2:
                 if "bytes" in data.keys():
                     model.set_audio_chunk(data["bytes"])
 
                 # sending data
-                text,sample_length,inference_time = model.get_last_text() 
-                final_text = text                       
-                resp = {'value': text, 'state': model.get_state()}
+                text = model.get_transcription() 
+                resp = {'value': text, 'state': model_state}
                 print(resp)
                 await websocket.send_json(resp)
             
             # actions after model has finished transcribing
-            if model.get_state() == 3:
-                resp = {'value': final_text, 'state': model.get_state()}
+            if model_state == 3:
+                resp = {'value': model.get_transcription(), 'state': 3}
                 print(resp)
                 await websocket.send_json(resp)
-                final_text = ""
-                model.set_state(0)
+                model.reset()
+
 
         except Exception as e:
             print('error:', e)
