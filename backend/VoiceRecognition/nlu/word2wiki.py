@@ -1,7 +1,6 @@
-from gtts import gTTS
 from bs4 import BeautifulSoup
-import winsound
 import requests
+
 def wiki(topic_name):
     try:
         user_request = topic_name

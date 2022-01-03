@@ -21,8 +21,8 @@ def weather(city):
     print(info)
     print(weather + "°C")
 
-
-city = input("Enter the Name of City: ")
-city = city + " weather"
-weather(city)
-print("Have a Nice Day:)")
+if __name__ == "__main__":
+    city = input("Enter the Name of City: ")
+    city = city + " weather"
+    weather(city)
+    print("Have a Nice Day:)")
