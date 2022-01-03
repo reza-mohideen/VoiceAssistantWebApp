@@ -6,6 +6,7 @@ from VoiceRecognition.Wav2vecLive.engine import Engine
 
 
 model = Engine("facebook/wav2vec2-base-960h")
+
 class Item(BaseModel):
     text: str
 
@@ -34,6 +35,7 @@ async def transcribe(data: Item):
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     print('Accepting client connection...')
+    final_text = ""
     await websocket.accept()
     while True:
         try:
@@ -50,17 +52,24 @@ async def websocket_endpoint(websocket: WebSocket):
                     print("stopping transcription")
                     model.set_audio_chunk(data["bytes"])
 
-            if "bytes" in data.keys():
-                model.set_audio_chunk(data["bytes"])
+            # actions while model is running
+            if model.get_state() == 1 or model.get_state() == 2:
+                if "bytes" in data.keys():
+                    model.set_audio_chunk(data["bytes"])
 
-            # sending data
-            text,sample_length,inference_time = model.get_last_text()                        
-            resp = {'value': text, 'state': model.get_state()}
-            print(resp)
-            await websocket.send_json(resp)
-
+                # sending data
+                text,sample_length,inference_time = model.get_last_text() 
+                final_text = text                       
+                resp = {'value': text, 'state': model.get_state()}
+                print(resp)
+                await websocket.send_json(resp)
+            
+            # actions after model has finished transcribing
             if model.get_state() == 3:
-                break
+                resp = {'value': final_text, 'state': model.get_state()}
+                print(resp)
+                await websocket.send_json(resp)
+                final_text = ""
 
         except Exception as e:
             print('error:', e)

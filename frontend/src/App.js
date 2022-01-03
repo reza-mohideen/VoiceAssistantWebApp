@@ -77,15 +77,18 @@ function App() {
 
   function startRecording() {
     recorder.current.startRecording();
-      ws.current.send('start');
-      console.log('starting recording')
+    setRecording(true);
+    ws.current.send('start');
+    console.log('starting recording')
   };
 
   function stopRecording() {
     recorder.current.stopRecording();
-      recorder.current.reset();
-      ws.current.send('stop');
-      console.log('stopping recording')
+    recorder.current.reset();
+    setRecording(false);
+    updateAmplitude();
+    ws.current.send('stop');
+    console.log('stopping recording')
   };
 
   function updateAmplitude() {

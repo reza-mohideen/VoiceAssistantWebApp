@@ -23,7 +23,7 @@ class Engine:
         """
         self.state = 0 
 
-    def stop(self):
+    def stop_listening(self):
         """stop the asr process"""
         Engine.exit_event.set()
         self.input_queue.put("close")
@@ -53,9 +53,9 @@ class Engine:
         self.state = 1
 
     def detect_silence(self, audio_chunks, asr_input_queue):
-        self.vad.set_mode(1)
+        self.vad.set_mode(3)
         
-        NUM_FRAMES = 5
+        NUM_FRAMES = 10
         RATE=16000
         CHUNK=960 #30ms
         FRAMES=20000
@@ -97,7 +97,7 @@ class Engine:
             except Empty:
                 continue
 
-        self.stop()
+        self.stop_listening()
 
     def transcribe_audio(self, in_queue, output_queue):
         
