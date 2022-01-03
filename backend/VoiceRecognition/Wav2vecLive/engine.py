@@ -133,6 +133,9 @@ class Engine:
     def get_state(self):
         return self.state
 
+    def set_state(self, state):
+        self.state = state
+
 if __name__ == "__main__":
     print("Live ASR")
     MODELS = {

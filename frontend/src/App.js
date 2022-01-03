@@ -25,6 +25,7 @@ function App() {
         setTranscription(message.value);
         console.log(message.value);
       }
+
       else if (message.state === 3) {
         setTranscription(message.value);
         stopRecording()
@@ -41,7 +42,7 @@ function App() {
     };
     ws.current.onclose = () => console.log('ws closed');
 
-    stream.current =navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( stream => {
+    stream.current = navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( stream => {
       recorder.current = RecordRTC(stream, {
         type: 'audio',
         mimeType: 'audio/webm;codecs=pcm',
@@ -66,8 +67,7 @@ function App() {
   useEffect(() => {
       if (!isRecording && ws.current.readyState === 1) {
         stopRecording()
-        return
-
+        ws.current.send('stop');
       };
       if (isRecording && ws.current.readyState === 1) {
         startRecording()
@@ -83,11 +83,9 @@ function App() {
   };
 
   function stopRecording() {
-    recorder.current.stopRecording();
-    recorder.current.reset();
+    recorder.current.pauseRecording();
     setRecording(false);
     updateAmplitude();
-    ws.current.send('stop');
     console.log('stopping recording')
   };
 

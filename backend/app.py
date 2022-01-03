@@ -50,7 +50,13 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 elif data["text"] == "stop":
                     print("stopping transcription")
-                    model.set_audio_chunk(data["bytes"])
+                    resp = {'value': final_text, 'state': 3}
+                    print(resp)
+                    await websocket.send_json(resp)
+                    final_text = ""
+                    model.stop_listening()
+                    model.set_state(0)
+                    
 
             # actions while model is running
             if model.get_state() == 1 or model.get_state() == 2:
@@ -70,6 +76,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 print(resp)
                 await websocket.send_json(resp)
                 final_text = ""
+                model.set_state(0)
 
         except Exception as e:
             print('error:', e)
