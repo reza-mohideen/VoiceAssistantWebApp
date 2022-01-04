@@ -33,7 +33,8 @@ def company_stock(user_inquiry):
             print(company.info['shortName'] + " (" + company.info['symbol'] + ")")
             print("Current Price: ", company.info['currentPrice'])
             print("Recommendation: ", company.info['recommendationKey'])
-            return company_stock
+            
+            return f"The current price of {company_stock['name']} stock is ${company_stock['price']}"
         except KeyError:
             print("Company cannot be found.")
 

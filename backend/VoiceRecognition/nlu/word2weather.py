@@ -19,7 +19,9 @@ def weather(city):
     print(location)
     print(time)
     print(info)
-    print(weather + "°C")
+    print(weather + "°F")
+    
+    return f"The weather in {location} is {weather}°F"
 
 if __name__ == "__main__":
     city = input("Enter the Name of City: ")
