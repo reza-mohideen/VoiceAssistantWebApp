@@ -96,7 +96,7 @@ class Engine:
                 percent_silence = len([ele for ele in silence_tags[-NUM_FRAMES:] if ele == False]) / NUM_FRAMES
                 elapsed_time = time.time() - self.start_time
                 print(f"percent silence is {percent_silence} and elapsed time is {elapsed_time}")
-                if percent_silence > 0.5:
+                if percent_silence > 0.3:
                     if exit_time is None:
                         exit_time = time.time()
                     elif time.time() - exit_time > 2:
