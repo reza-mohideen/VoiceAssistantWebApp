@@ -1,4 +1,5 @@
 from fastapi import FastAPI, WebSocket
+import uvicorn
 import numpy as np
 from VoiceRecognition.Wav2vecLive.inference import Wave2Vec2Inference
 
@@ -33,3 +34,6 @@ async def websocket_endpoint(websocket: WebSocket):
             print('error:', e)
     
     print('Bye..')
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -71,7 +71,7 @@ function App() {
   return (
     <div className='container'>
       <div className='siriwave'>
-        <Siriwave style='ios9' amplitude={amp}/>
+        <Siriwave style='ios9' amplitude={amp} speed={0.1}/>
       </div>
       <div className='box'>
         <h2>Input</h2>

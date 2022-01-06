@@ -1,94 +1,94 @@
 3M Company,MMM
 Abbott Laboratories,ABT
 AbbVie Inc.,ABBV
-ABIOMED Inc,ABMD
-Accenture plc,ACN
+ABIOMED Inc.,ABMD
+Accenture plc.,ACN
 Activision Blizzard,ATVI
-Adobe Systems Inc,ADBE
-Advanced Micro Devices Inc,AMD
+Adobe Systems Inc.,ADBE
+Advanced Micro Devices Inc.,AMD
 Advance Auto Parts,AAP
-AES Corp,AES
-AFLAC Inc,AFL
-Agilent Technologies Inc,A
-Air Products & Chemicals Inc,APD
-Akamai Technologies Inc,AKAM
-Alaska Air Group Inc,ALK
-Albemarle Corp,ALB
+AES Corp.,AES
+AFLAC Inc.,AFL
+Agilent Technologies Inc.,A
+Air Products & Chemicals Inc.,APD
+Akamai Technologies Inc.,AKAM
+Alaska Air Group Inc.,ALK
+Albemarle Corp.,ALB
 Alexandria Real Estate Equities,ARE
 Alexion Pharmaceuticals,ALXN
 Align Technology,ALGN
 Allegion,ALLE
-Allergan, plc,AGN
+Allergan plc.,AGN
 Alliance Data Systems,ADS
-Alliant Energy Corp,LNT
-Allstate Corp,ALL
-Alphabet Inc Class A,GOOGL
-Alphabet Inc Class C,GOOG
-Altria Group Inc,MO
-Amazon.com Inc.,AMZN
-Amcor plc,AMCR
-Ameren Corp,AEE
+Alliant Energy Corp.,LNT
+Allstate Corp.,ALL
+Alphabet Inc. Class A,GOOGL
+Alphabet Inc. Class C,GOOG
+Altria Group Inc.,MO
+Amazon Inc.,AMZN
+Amcor plc.,AMCR
+Ameren Corp.,AEE
 American Airlines Group,AAL
 American Electric Power,AEP
-American Express Co,AXP
+American Express Co.,AXP
 American International Group,AIG
 American Tower Corp.,AMT
-American Water Works Company Inc,AWK
+American Water Works Company Inc.,AWK
 Ameriprise Financial,AMP
-AmerisourceBergen Corp,ABC
+AmerisourceBergen Corp.,ABC
 AMETEK Inc.,AME
 Amgen Inc.,AMGN
-Amphenol Corp,APH
-Analog Devices, Inc.,ADI
+Amphenol Corp.,APH
+Analog Devices Inc.,ADI
 ANSYS,ANSS
 Anthem,ANTM
-Aon plc,AON
-A.O. Smith Corp,AOS
+Aon plc.,AON
+AO Smith Corp.,AOS
 Apache Corporation,APA
 Apartment Investment & Management,AIV
 Apple Inc.,AAPL
 Applied Materials Inc.,AMAT
-Aptiv PLC,APTV
-Archer-Daniels-Midland Co,ADM
+Aptiv PLC.,APTV
+Archer-Daniels-Midland Co.,ADM
 Arconic Inc.,ARNC
 Arista Networks,ANET
-Arthur J. Gallagher & Co.,AJG
+Arthur J Gallagher & Co.,AJG
 Assurant,AIZ
-Atmos Energy Corp,ATO
+Atmos Energy Corp.,ATO
 AT&T Inc.,T
 Autodesk Inc.,ADSK
 Automatic Data Processing,ADP
-AutoZone Inc,AZO
-AvalonBay Communities, Inc.,AVB
-Avery Dennison Corp,AVY
-Baker Hughes Co,BKR
-Ball Corp,BLL
-Bank of America Corp,BAC
+AutoZone Inc.,AZO
+AvalonBay Communities Inc.,AVB
+Avery Dennison Corp.,AVY
+Baker Hughes Co.,BKR
+Ball Corp.,BLL
+Bank of America Corp.,BAC
 The Bank of New York Mellon Corp.,BK
 Baxter International Inc.,BAX
 Becton Dickinson,BDX
-Berkshire Hathaway,BRK.B
+Berkshire Hathaway,BRKB
 Best Buy Co. Inc.,BBY
 Biogen Inc.,BIIB
 Google, GOOG
 BlackRock,BLK
 Boeing Company,BA
-Booking Holdings Inc,BKNG
+Booking Holdings Inc.,BKNG
 BorgWarner,BWA
 Boston Properties,BXP
 Boston Scientific,BSX
 Bristol-Myers Squibb,BMY
 Broadcom Inc.,AVGO
 Broadridge Financial Solutions,BR
-Brown-Forman Corp.,BF.B
-C. H. Robinson Worldwide,CHRW
+Brown-Forman Corp.,BFB
+C H Robinson Worldwide,CHRW
 Cabot Oil & Gas,COG
 Cadence Design Systems,CDNS
 Campbell Soup,CPB
 Capital One Financial,COF
 Capri Holdings,CPRI
 Cardinal Health Inc.,CAH
-Carmax Inc,KMX
+Carmax Inc.,KMX
 Carnival Corp.,CCL
 Caterpillar Inc.,CAT
 Cboe Global Markets,CBOE
@@ -97,9 +97,9 @@ CDW,CDW
 Celanese,CE
 Centene Corporation,CNC
 CenterPoint Energy,CNP
-CenturyLink Inc,CTL
+CenturyLink Inc.,CTL
 Cerner,CERN
-CF Industries Holdings Inc,CF
+CF Industries Holdings Inc.,CF
 Charles Schwab Corporation,SCHW
 Charter Communications,CHTR
 Chevron Corp.,CVX
@@ -117,7 +117,7 @@ Citrix Systems,CTXS
 The Clorox Company,CLX
 CME Group Inc.,CME
 CMS Energy,CMS
-Coca-Cola Company,KO
+Coca Cola Company,KO
 Cognizant Technology Solutions,CTSH
 Colgate-Palmolive,CL
 Comcast Corp.,CMCSA
@@ -128,16 +128,16 @@ ConocoPhillips,COP
 Consolidated Edison,ED
 Constellation Brands,STZ
 The Cooper Companies,COO
-Copart Inc,CPRT
+Copart Inc.,CPRT
 Corning Inc.,GLW
 Corteva,CTVA
 Costco Wholesale Corp.,COST
-Coty, Inc,COTY
+Coty Inc.,COTY
 Crown Castle International Corp.,CCI
 CSX Corp.,CSX
 Cummins Inc.,CMI
 CVS Health,CVS
-D. R. Horton,DHI
+D R Horton,DHI
 Danaher Corp.,DHR
 Darden Restaurants,DRI
 DaVita Inc.,DVA
@@ -146,7 +146,7 @@ Delta Air Lines Inc.,DAL
 Dentsply Sirona,XRAY
 Devon Energy,DVN
 Diamondback Energy,FANG
-Digital Realty Trust Inc,DLR
+Digital Realty Trust Inc.,DLR
 Discover Financial Services,DFS
 Discovery Inc. Class A,DISCA
 Discovery Inc. Class C,DISCK
@@ -158,8 +158,8 @@ Dover Corp.,DOV
 Dow Inc.,DOW
 DTE Energy Co.,DTE
 Duke Energy,DUK
-Duke Realty Corp,DRE
-DuPont de Nemours Inc,DD
+Duke Realty Corp.,DRE
+DuPont de Nemours Inc.,DD
 DXC Technology,DXC
 E*Trade,ETFC
 Eastman Chemical,EMN
@@ -176,7 +176,7 @@ Equifax Inc.,EFX
 Equinix,EQIX
 Equity Residential,EQR
 Essex Property Trust, Inc.,ESS
-Estee Lauder Cos.,EL
+Estee Lauder Cos,EL
 Evergy,EVRG
 Eversource Energy,ES
 Everest Re Group Ltd.,RE
@@ -186,22 +186,22 @@ Expeditors,EXPD
 Extra Space Storage,EXR
 Exxon Mobil Corp.,XOM
 F5 Networks,FFIV
-Facebook, Inc.,FB
-Fastenal Co,FAST
+Facebook Inc.,FB
+Fastenal Co.,FAST
 Federal Realty Investment Trust,FRT
 FedEx Corporation,FDX
 Fidelity National Information Services,FIS
 Fifth Third Bancorp,FITB
-FirstEnergy Corp,FE
+FirstEnergy Corp.,FE
 First Republic Bank,FRC
-Fiserv Inc,FISV
-FleetCor Technologies Inc,FLT
+Fiserv Inc.,FISV
+Fleetcor Technologies Inc.,FLT
 FLIR Systems,FLIR
 Flowserve Corporation,FLS
 FMC Corporation,FMC
 Ford Motor,F
 Fortinet,FTNT
-Fortive Corp,FTV
+Fortive Corp.,FTV
 Fortune Brands Home & Security,FBHS
 Fox Corporation Class A,FOXA
 Fox Corporation Class B,FOX
@@ -209,7 +209,7 @@ Franklin Resources,BEN
 Freeport-McMoRan Inc.,FCX
 Gap Inc.,GPS
 Garmin Ltd.,GRMN
-Gartner Inc,IT
+Gartner Inc.,IT
 General Dynamics,GD
 General Electric,GE
 General Mills,GIS
@@ -219,12 +219,12 @@ Gilead Sciences,GILD
 Globe Life Inc.,GL
 Global Payments Inc.,GPN
 Goldman Sachs Group,GS
-Grainger (W.W.) Inc.,GWW
+Grainger (WW) Inc.,GWW
 H&R Block,HRB
 Halliburton Co.,HAL
-Hanesbrands Inc,HBI
+Hanesbrands Inc.,HBI
 Harley-Davidson,HOG
-Hartford Financial Svc.Gp.,HIG
+Hartford Financial SvcGp,HIG
 Hasbro Inc.,HAS
 HCA Healthcare,HCA
 Healthpeak Properties,PEAK
@@ -233,8 +233,8 @@ Henry Schein,HSIC
 The Hershey Company,HSY
 Hess Corporation,HES
 Hewlett Packard Enterprise,HPE
-Hilton Worldwide Holdings Inc,HLT
-HollyFrontier Corp,HFC
+Hilton Worldwide Holdings Inc.,HLT
+HollyFrontier Corp.,HFC
 Hologic,HOLX
 Home Depot,HD
 Honeywell Int'l Inc.,HON
@@ -248,12 +248,12 @@ IDEX Corporation,IEX
 IDEXX Laboratories,IDXX
 IHS Markit Ltd.,INFO
 Illinois Tool Works,ITW
-Illumina Inc,ILMN
-Ingersoll-Rand PLC,IR
+Illumina Inc.,ILMN
+Ingersoll-Rand PLC.,IR
 Intel Corp.,INTC
 Intercontinental Exchange,ICE
 International Business Machines,IBM
-Incyte,INCY
+Incyte, INCY
 International Paper,IP
 Interpublic Group,IPG
 Intl Flavors & Fragrances,IFF
@@ -262,10 +262,10 @@ Intuitive Surgical Inc.,ISRG
 Invesco Ltd.,IVZ
 IPG Photonics Corp.,IPGP
 IQVIA Holdings Inc.,IQV
-Iron Mountain Incorporated,IRM
+Iron Mountain Inc.,IRM
 Jack Henry & Associates,JKHY
 Jacobs Engineering Group,J
-J. B. Hunt Transport Services,JBHT
+J B Hunt Transport Services,JBHT
 JM Smucker,SJM
 Johnson & Johnson,JNJ
 Johnson Controls International,JCI
@@ -279,42 +279,42 @@ Kimberly-Clark,KMB
 Kimco Realty,KIM
 Kinder Morgan,KMI
 KLA Corporation,KLAC
-Kohl's Corp.,KSS
-Kraft Heinz Co,KHC
+Kohls Corp.,KSS
+Kraft Heinz Co.,KHC
 Kroger Co.,KR
 L Brands Inc.,LB
 L3Harris Technologies,LHX
 Laboratory Corp. of America Holding,LH
 Lam Research,LRCX
-Lamb Weston Holdings Inc,LW
+Lamb Weston Holdings Inc.,LW
 Las Vegas Sands,LVS
 Leggett & Platt,LEG
 Leidos Holdings,LDOS
 Lennar Corp.,LEN
-Lilly (Eli) & Co.,LLY
+Lilly & Co.,LLY
 Lincoln National,LNC
-Linde plc,LIN
+Linde plc.,LIN
 Live Nation Entertainment,LYV
 LKQ Corporation,LKQ
 Lockheed Martin Corp.,LMT
 Loews Corp.,L
-Lowe's Cos.,LOW
+Lowe's Cos,LOW
 LyondellBasell,LYB
 M&T Bank Corp.,MTB
 Macy's Inc.,M
 Marathon Oil Corp.,MRO
 Marathon Petroleum,MPC
 MarketAxess,MKTX
-Marriott Int'l.,MAR
+Marriott Int'l,MAR
 Marsh & McLennan,MMC
 Martin Marietta Materials,MLM
 Masco Corp.,MAS
 Mastercard Inc.,MA
 McCormick & Co.,MKC
-Maxim Integrated Products Inc,MXIM
+Maxim Integrated Products Inc.,MXIM
 McDonald's Corp.,MCD
 McKesson Corp.,MCK
-Medtronic plc,MDT
+Medtronic plc.,MDT
 Merck & Co.,MRK
 MetLife Inc.,MET
 Mettler Toledo,MTD
@@ -327,13 +327,13 @@ Mohawk Industries,MHK
 Molson Coors Brewing Company,TAP
 Mondelez International,MDLZ
 Monster Beverage,MNST
-Moody's Corp,MCO
+Moody's Corp.,MCO
 Morgan Stanley,MS
 The Mosaic Company,MOS
 Motorola Solutions Inc.,MSI
-MSCI Inc,MSCI
-Mylan N.V.,MYL
-Nasdaq, Inc.,NDAQ
+MSCI Inc.,MSCI
+Mylan NV,MYL
+Nasdaq Inc.,NDAQ
 National Oilwell Varco Inc.,NOV
 NetApp,NTAP
 Netflix Inc.,NFLX
@@ -343,9 +343,9 @@ News Corp. Class A,NWSA
 News Corp. Class B,NWS
 NextEra Energy,NEE
 Nielsen Holdings,NLSN
-Nike,NKE
+Nike Inc.,NKE
 NiSource Inc.,NI
-Noble Energy Inc,NBL
+Noble Energy Inc.,NBL
 Nordstrom,JWN
 Norfolk Southern Corp.,NSC
 Northern Trust Corp.,NTRS
@@ -355,8 +355,8 @@ Norwegian Cruise Line Holdings,NCLH
 NRG Energy,NRG
 Nucor Corp.,NUE
 Nvidia Corporation,NVDA
-NVR Inc,NVR
-O'Reilly Automotive,ORLY
+NVR Inc.,NVR
+O Reilly Automotive,ORLY
 Occidental Petroleum,OXY
 Old Dominion Freight Line,ODFL
 Omnicom Group,OMC
@@ -367,7 +367,7 @@ Packaging Corporation of America,PKG
 Parker-Hannifin,PH
 Paychex Inc.,PAYX
 PayPal,PYPL
-Pentair plc,PNR
+Pentair plc.,PNR
 People's United Financial,PBCT
 PepsiCo Inc.,PEP
 PerkinElmer,PKI
@@ -385,7 +385,7 @@ Procter & Gamble,PG
 Progressive Corp.,PGR
 Prologis,PLD
 Prudential Financial,PRU
-Public Serv. Enterprise Inc.,PEG
+Public Serv Enterprise Inc.,PEG
 Public Storage,PSA
 Pulte Homes Inc.,PHM
 PVH Corp.,PVH
@@ -400,16 +400,16 @@ Realty Income Corporation,O
 Regency Centers Corporation,REG
 Regeneron Pharmaceuticals,REGN
 Regions Financial Corp.,RF
-Republic Services Inc,RSG
+Republic Services Inc.,RSG
 ResMed,RMD
 Robert Half International,RHI
 Rockwell Automation Inc.,ROK
 Rollins Inc.,ROL
 Roper Technologies,ROP
-Ross Stores,ROST
-Royal Caribbean Cruises Ltd,RCL
-S&P Global, Inc.,SPGI
-Salesforce.com,CRM
+Ross,ROST
+Royal Caribbean Cruises Ltd.,RCL
+S&P Global Inc.,SPGI
+Salesforcecom,CRM
 SBA Communications,SBAC
 Schlumberger Ltd.,SLB
 Seagate Technology,STX
@@ -417,7 +417,7 @@ Sealed Air,SEE
 Sempra Energy,SRE
 ServiceNow,NOW
 Sherwin-Williams,SHW
-Simon Property Group Inc,SPG
+Simon Property Group Inc.,SPG
 Skyworks Solutions,SWKS
 SL Green Realty,SLG
 Snap-on,SNA
@@ -426,16 +426,16 @@ Southwest Airlines,LUV
 Stanley Black & Decker,SWK
 Starbucks Corp.,SBUX
 State Street Corp.,STT
-STERIS plc,STE
+STERIS plc.,STE
 Stryker Corp.,SYK
 SVB Financial,SIVB
 Synchrony Financial,SYF
 Synopsys Inc.,SNPS
 Sysco Corp.,SYY
 T-Mobile US,TMUS
-T. Rowe Price Group,TROW
+T Rowe Price Group,TROW
 Take-Two Interactive,TTWO
-Tapestry, Inc.,TPR
+Tapestry Inc.,TPR
 Target Corp.,TGT
 TE Connectivity Ltd.,TEL
 TechnipFMC,FTI
@@ -449,57 +449,57 @@ Tractor Supply Company,TSCO
 TransDigm Group,TDG
 The Travelers Companies Inc.,TRV
 Truist Financial,TFC
-Twitter, Inc.,TWTR
+Twitter Inc.,TWTR
 Tyson Foods,TSN
-UDR, Inc.,UDR
+UDR Inc.,UDR
 Ulta Beauty,ULTA
-U.S. Bancorp,USB
+US Bancorp,USB
 Under Armour Class A,UAA
 Under Armour Class C,UA
-Union Pacific Corp,UNP
+Union Pacific Corp.,UNP
 United Airlines Holdings,UAL
 United Health Group Inc.,UNH
 United Parcel Service,UPS
-United Rentals, Inc.,URI
+United Rentals Inc.,URI
 United Technologies,UTX
-Universal Health Services, Inc.,UHS
+Universal Health Services Inc.,UHS
 Unum Group,UNM
-V.F. Corp.,VFC
+VF Corp.,VFC
 Valero Energy,VLO
 Varian Medical Systems,VAR
-Ventas Inc,VTR
+Ventas Inc.,VTR
 Verisign Inc.,VRSN
 Verisk Analytics,VRSK
 Verizon Communications,VZ
-Vertex Pharmaceuticals Inc,VRTX
-ViacomCBS,VIAC
+Vertex Pharmaceuticals Inc.,VRTX
+Viacom CBS,VIAC
 Visa Inc.,V
 Vornado Realty Trust,VNO
 Vulcan Materials,VMC
-W. R. Berkley Corporation,WRB
+W R Berkley Corporation,WRB
 Wabtec Corporation,WAB
 Walmart,WMT
 Walgreens Boots Alliance,WBA
 The Walt Disney Company,DIS
 Waste Management Inc.,WM
 Waters Corporation,WAT
-Wec Energy Group Inc,WEC
+Wec Energy Group Inc.,WEC
 WellCare,WCG
 Wells Fargo,WFC
 Welltower Inc.,WELL
 Western Digital,WDC
-Western Union Co,WU
+Western Union Co.,WU
 WestRock,WRK
 Weyerhaeuser,WY
 Whirlpool Corp.,WHR
-Williams Cos.,WMB
+Williams Cos,WMB
 Willis Towers Watson,WLTW
-Wynn Resorts Ltd,WYNN
-Xcel Energy Inc,XEL
+Wynn Resorts Ltd.,WYNN
+Xcel Energy Inc.,XEL
 Xerox,XRX
 Xilinx,XLNX
 Xylem Inc.,XYL
-Yum! Brands Inc,YUM
+Yum! Brands Inc.,YUM
 Zebra Technologies,ZBRA
 Zimmer Biomet Holdings,ZBH
 Zions Bancorp,ZION
