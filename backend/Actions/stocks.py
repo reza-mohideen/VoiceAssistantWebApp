@@ -53,4 +53,4 @@ if __name__ == "__main__":
     company_stock("show me abbott stocks")  # stock that exists (works)
     company_stock("give me bob stock")  # stock that does not exist (works)
     company_stock("show me GOOGLE stock")  # stock that exists but all caps (works)
-    company_stock("tell me the stock price of facebook")  # stock for a company (works)
+    company_stock("tell me the stock price of facebook")  # stock for a company using the word 'of' (works)
