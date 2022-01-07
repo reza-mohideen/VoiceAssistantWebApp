@@ -14,7 +14,6 @@ def get_symbol(user_stock_inquiry: str) -> None:
         try:
             company_names = key.split(',')
             company_names[0] = key.replace('&', ' and ')
-            # print(company_names[0])
             for word in extra_words:
                 if word in company_names[0]:
                     company_names[0] = company_names[0].replace(' ' + word, '')
